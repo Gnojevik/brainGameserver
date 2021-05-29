@@ -1,8 +1,7 @@
 
 // setInterval(time, 1000);
 
-let fn = "";
-let ln = "";
+
 
 let count = 0;
 let lvl = 11;
@@ -106,26 +105,23 @@ function sendToServer() {
    if (Number(bTotal.textContent) < total) {
       let formHtml = document.getElementsByClassName('form-server');
       formHtml[0].style.display = 'flex';
+      let honor = document.getElementById('honor');
       let sendButton = document.getElementById('send-serv');
-      let fnameInput = document.getElementById('fname');
-      let lnameInput = document.getElementById('lname');
-
-      fn = fnameInput.value;
-      ln = lnameInput.value;
-
+      honor.innerHTML = "<p>Congratulations - you are a new champion!!!</p> <p>Save your name on the honor board</p> ";
       sendButton.addEventListener('click', send);
    }
 
 }
 
 async function send() {
-
-   if (fn.length === 0 || ln.length === 0) {
+   let fnameInput = document.getElementById('fname');
+   let lnameInput = document.getElementById('lname');
+   if (fnameInput.value.length === 0 || lnameInput.value.length === 0) {
       alert("Enter Name and Last Name");
    } else {
       let user = {
-         fname: fn,
-         lname: ln,
+         fname: fnameInput.value,
+         lname: lnameInput.value,
          score: total
       };
 
@@ -139,8 +135,9 @@ async function send() {
 
 
       let result = await response.json();
-      console.log(`User: ${result.fname} ${result.lname} Score: ${result.score}`);
-      console.log(`Best Score: ${result.totalScore}`);
+
+      let honor = document.getElementById('honor');
+      honor.innerHTML = `<p>${result.fname} ${result.lname}</p> <p>Your record: ${result.score} </p> `;
       bestTotal();
    }
 }

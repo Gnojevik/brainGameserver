@@ -159,6 +159,10 @@ main {
    margin: 10px;
 }
 
+.form-server p {
+   margin: 10px 0;
+   color: cornsilk;
+}
 .form-server input {
    margin: 15px;
 }

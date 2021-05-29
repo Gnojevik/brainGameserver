@@ -4,8 +4,8 @@ const bodyParser = require("body-parser");
 const { json } = require('body-parser');
 
 let totalScore = 0;
-let bestName = 'nothing';
-let bestLname = 'nothing';
+let bestName = '';
+let bestLname = '';
 let bestScore = 0;
 var bestUser = {
   fname: bestName,
