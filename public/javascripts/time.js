@@ -15,18 +15,18 @@ bestTotal();
 function timer() {
    document.body.onselectstart = function () { return false };
    document.body.onmousedown = function () { return false };
-   let seconds = 3;
+   let seconds = 30;
    setTimeout(function () {
       let str = "";
       let timerHtml = document.getElementsByClassName('timer');
       if (seconds - count < 10) {
-         str = `<p style="color: rgb(233, 7, 25);
+         str = `<p class="tablet" style="color: rgb(233, 7, 25);
          background-color: rgb(83, 165, 42);
          border-radius: 5px;
       "> 0${seconds - count} </p>`;
 
       } else {
-         str = `<p> ${seconds - count} </p>`;
+         str = `<p class="tablet"> ${seconds - count} </p>`;
       }
 
       timerHtml[0].innerHTML = str;
@@ -84,7 +84,7 @@ function trueOrFalse() {
    let totalCount = document.getElementById('total');
    let buttonTrue = document.getElementById('buttonTrue');
    let buttonFalse = document.getElementById('buttonFalse');
-   buttonTrue.addEventListener('click', () => { total += 3; totalCount.style.color = "rgb(83, 165, 42)"; quest(lvl); });
+   buttonTrue.addEventListener('click', () => { total += 3; totalCount.style.color = "aliceblue"; quest(lvl); });
    buttonFalse.addEventListener('click', () => { total -= 5; totalCount.style.color = "red"; quest(lvl); });
 }
 
@@ -116,8 +116,8 @@ function sendToServer() {
 async function send() {
    let fnameInput = document.getElementById('fname');
    let lnameInput = document.getElementById('lname');
-   if (fnameInput.value.length === 0 || lnameInput.value.length === 0) {
-      alert("Enter Name and Last Name");
+   if (fnameInput.value.length === 0) {
+      alert("Please enter Name");
    } else {
       let user = {
          fname: fnameInput.value,
